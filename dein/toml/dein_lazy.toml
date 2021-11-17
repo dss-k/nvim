@@ -1,0 +1,47 @@
+# deoplete------------------
+
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
+#hook_post_source = '''
+#  let g:deoplete#enable_at_startup = 1
+#  "let g:deoplete#auto_complete_delay = 0
+#'''
+
+#[[plugins]]
+#repo = 'roxma/nvim-yarp'
+#
+#[[plugins]]
+#repo = 'roxma/vim-hug-neovim-rpc'
+
+#--------------------------
+
+# ddc.vim------------------
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+  call ddc#custom#patch_global('sources', ['around'])
+  call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
+  call ddc#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+

@@ -1,11 +1,11 @@
-#nvim-config
-##Requirement
+# nvim-config
+## Requirement
 ***
 - NeoVim
 - dein.vim
 - Python3
 
-##Instaration
+## Instaration
 ***
 - Python3 (pip)
 '''

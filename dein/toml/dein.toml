@@ -1,0 +1,46 @@
+# Required:
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'leico/autodate.vim'
+
+#カラースキーマ
+[[plugins]]
+repo = 'tomasr/molokai'
+
+#[[plugins]]
+#repo = 'vim-airline/vim-airline'
+#depends = ['/vim-airline-themes']
+#
+#[[plugins]]
+#repo = 'vim-airline/vim-airline-themes'
+#hook_add = '''
+#  set laststatus=2
+#  let g:airline_powerline_fonts = 1
+#  let g:airline#extensions#tabline#enabled = 1
+#  let g:airline#extensions#tabline#buffer_idx_mode = 1
+#  let g:airline#extensions#whitespace#mixed_indent_algo = 1
+#  let g:airline_theme = 'papercolor'
+#'''
+#
+#[[plugins]]
+#repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline = {
+  \ 'colorscheme': 'wombat'
+  \ }
+'''
+
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
+#hook_add = '''
+#  let g:deoplete#enable_at_startup = 1
+#  "let g:deoplete#auto_complete_delay = 0
+#'''
+#
+#[[plugins]]
+#repo = 'jedi-vim/deoplete-jedi'
