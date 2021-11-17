@@ -35,12 +35,31 @@ hook_add = '''
   \ }
 '''
 
-#[[plugins]]
-#repo = 'Shougo/deoplete.nvim'
-#hook_add = '''
-#  let g:deoplete#enable_at_startup = 1
-#  "let g:deoplete#auto_complete_delay = 0
-#'''
-#
-#[[plugins]]
-#repo = 'jedi-vim/deoplete-jedi'
+# denite.vim------------------
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+  " Define mappings
+  nnoremap <silent> <C-o> :<C-u>Denite file buffer file:new<CR>
+  autocmd FileType denite call s:denite_my_settings()
+  function! s:denite_my_settings() abort
+        nnoremap <silent><buffer><expr> <Esc>
+                \ denite#do_map('quit')
+        nnoremap <silent><buffer><expr> <Space>
+                \ denite#do_map('toggle_select').'j'
+        nnoremap <silent><buffer><expr> <CR>
+                \ denite#do_map('do_action')
+        nnoremap <silent><buffer><expr> o
+                \ denite#do_map('do_action')
+        nnoremap <silent><buffer><expr> s
+                \ denite#do_map('do_action', 'split')
+        nnoremap <silent><buffer><expr> v
+                \ denite#do_map('do_action', 'vsplit')
+        nnoremap <silent><buffer><expr> i
+                \ denite#do_map('open_filter_buffer')
+        nnoremap <silent><buffer><expr> ..
+                \ denite#do_map('move_up_path')
+  endfunction
+'''
+#--------------------
+
