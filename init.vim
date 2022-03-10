@@ -142,6 +142,9 @@ colorscheme molokai
 let g:rehash256 = 1
 highlight Normal ctermbg=none
 
+"Ctrl-c をESCと同じ動きに
+inoremap <C-c> <ESC>
+
 nnoremap <Space>w  :<C-u>w<CR>
 nnoremap <Space>q  :<C-u>q<CR>
 nnoremap <Space>Q  :<C-u>q!<CR>
