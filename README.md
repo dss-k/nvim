@@ -12,4 +12,5 @@
 
 ```
 pip3 install pynvim
+pip3 install msgpack
 ```
