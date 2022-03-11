@@ -143,6 +143,7 @@ let g:rehash256 = 1
 highlight Normal ctermbg=none
 
 "Ctrl-c をESCと同じ動きに
+nnoremap <C-c> <ESC>
 inoremap <C-c> <ESC>
 
 nnoremap <Space>w  :<C-u>w<CR>
@@ -186,4 +187,3 @@ if has("autocmd")
     \ endif
 endif
 """"""""""""""""""""""""""""""
-

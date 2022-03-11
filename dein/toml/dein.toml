@@ -9,24 +9,6 @@ repo = 'leico/autodate.vim'
 [[plugins]]
 repo = 'tomasr/molokai'
 
-#[[plugins]]
-#repo = 'vim-airline/vim-airline'
-#depends = ['/vim-airline-themes']
-#
-#[[plugins]]
-#repo = 'vim-airline/vim-airline-themes'
-#hook_add = '''
-#  set laststatus=2
-#  let g:airline_powerline_fonts = 1
-#  let g:airline#extensions#tabline#enabled = 1
-#  let g:airline#extensions#tabline#buffer_idx_mode = 1
-#  let g:airline#extensions#whitespace#mixed_indent_algo = 1
-#  let g:airline_theme = 'papercolor'
-#'''
-#
-#[[plugins]]
-#repo = 'ryanoasis/vim-devicons'
-
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
@@ -36,30 +18,139 @@ hook_add = '''
 '''
 
 # denite.vim------------------
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-  " Define mappings
-  nnoremap <silent> <C-o> :<C-u>Denite file buffer file:new<CR>
-  autocmd FileType denite call s:denite_my_settings()
-  function! s:denite_my_settings() abort
-        nnoremap <silent><buffer><expr> <Esc>
-                \ denite#do_map('quit')
-        nnoremap <silent><buffer><expr> <Space>
-                \ denite#do_map('toggle_select').'j'
-        nnoremap <silent><buffer><expr> <CR>
-                \ denite#do_map('do_action')
-        nnoremap <silent><buffer><expr> o
-                \ denite#do_map('do_action')
-        nnoremap <silent><buffer><expr> s
-                \ denite#do_map('do_action', 'split')
-        nnoremap <silent><buffer><expr> v
-                \ denite#do_map('do_action', 'vsplit')
-        nnoremap <silent><buffer><expr> i
-                \ denite#do_map('open_filter_buffer')
-        nnoremap <silent><buffer><expr> ..
-                \ denite#do_map('move_up_path')
-  endfunction
-'''
+#[[plugins]]
+#repo = 'Shougo/denite.nvim'
+#hook_add = '''
+#  " Define mappings
+#  nnoremap <silent> <C-o> :<C-u>Denite file buffer file:new<CR>
+#  autocmd FileType denite call s:denite_my_settings()
+#  function! s:denite_my_settings() abort
+#        nnoremap <silent><buffer><expr> <Esc>
+#                \ denite#do_map('quit')
+#        nnoremap <silent><buffer><expr> <Space>
+#                \ denite#do_map('toggle_select').'j'
+#        nnoremap <silent><buffer><expr> <CR>
+#                \ denite#do_map('do_action')
+#        nnoremap <silent><buffer><expr> o
+#                \ denite#do_map('do_action')
+#        nnoremap <silent><buffer><expr> s
+#                \ denite#do_map('do_action', 'split')
+#        nnoremap <silent><buffer><expr> v
+#                \ denite#do_map('do_action', 'vsplit')
+#        nnoremap <silent><buffer><expr> i
+#                \ denite#do_map('open_filter_buffer')
+#        nnoremap <silent><buffer><expr> ..
+#                \ denite#do_map('move_up_path')
+#  endfunction
+#'''
 #--------------------
 
+# ddu.vim------------------
+[[plugins]]
+repo = 'vim-denops/denops.vim' # required by ddu.vim and ddc.vim
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+hook_add = '''
+  call ddu#custom#patch_global({
+    \   'ui': 'ff',
+    \   'sources': [{'name':'file','params':{}},
+    \     {'name':'file_rec','params':{}},
+    \     {'name':'file_old','params':{}},
+    \     {'name':'register'},
+    \     {'name':'buffer'}],
+    \   'sourceOptions': {
+    \     '_': {
+    \       'matchers': ['matcher_substring'],
+    \     },
+    \   },
+    \   'kindOptions': {
+    \     'file': {
+    \       'defaultAction': 'open',
+    \     }
+    \   }
+    \ })
+
+  "ddu key mapping
+  nnoremap <silent> <C-f> :<C-u>Ddu file<CR>
+  nnoremap <silent> <C-o> :<C-u>Ddu file_rec<CR>
+  nnoremap <silent> <C-r> :<C-u>Ddu file_old<CR>
+  nnoremap <silent> <C-b> :<C-u>Ddu buffer<CR>
+'''
+
+[[plugins]]
+# 基本のUI
+repo = 'Shougo/ddu-ui-ff'
+hook_add = '''
+  autocmd FileType ddu-ff call s:ddu_my_settings()
+  function! s:ddu_my_settings() abort
+    nnoremap <buffer><silent> <CR>
+          \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+    nnoremap <buffer><silent> <Space>
+          \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+    nnoremap <buffer><silent> i
+          \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+    nnoremap <buffer><silent> q
+          \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+  endfunction
+
+  autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
+  function! s:ddu_filter_my_settings() abort
+    inoremap <buffer><silent> <CR>
+    \ <Esc><Cmd>close<CR>
+    nnoremap <buffer><silent> <CR>
+    \ <Cmd>close<CR>
+    nnoremap <buffer><silent> q
+    \ <Cmd>close<CR>
+  endfunction
+'''
+
+[[plugins]]
+# ファイル用UI
+repo = 'Shougo/ddu-ui-filer'
+hook_add = '''
+  autocmd FileType ddu-filer call s:ddu_ui_filer_my_settings()
+  function! s:ddu_ui_filer_my_settings() abort
+    set modifiable
+    nnoremap <buffer><silent> <CR>
+    \ ddu#ui#filer#is_directory() ?
+    \ "<Cmd>call ddu#ui#filer#do_action('itemAction',{'name': 'narrow'})<CR>" :
+    \ "<Cmd>call ddu#ui#filer#do_action('itemAction',{'name': 'open'})<CR>"
+    nnoremap <buffer><silent> q
+    \ <Cmd>close<CR>
+  endfunction
+'''
+
+[[plugins]]
+# file open kind: ファイルオープン動作
+repo = 'Shougo/ddu-kind-file'
+
+[[plugins]]
+# 検索機能
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+[[plugins]]
+# ファイル用ソース
+repo = 'Shougo/ddu-source-file'
+
+[[plugins]]
+# ファイルを再帰的に探すソース
+repo = 'Shougo/ddu-source-file_rec' # depends on ddu-kind-file"
+
+[[plugins]]
+# レジスタ用ソース
+repo = 'Shougo/ddu-source-register'
+
+[[plugins]]
+# 履歴用ソース
+repo = 'Shougo/ddu-source-file_old'
+
+[[plugins]]
+# バッファ用ソース
+repo = 'shun/ddu-source-buffer'
+
+[[plugins]]
+# Ddu <file source>で実行できるようになる
+# 一番最後に読み込む必要あり
+repo = 'Shougo/ddu-commands.vim'
+#--------------------
