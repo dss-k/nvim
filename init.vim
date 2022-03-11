@@ -153,8 +153,8 @@ nnoremap <Leader>q  :<C-u>q<CR>
 nnoremap <Leader>Q  :<C-u>q!<CR>
 
 " 画面分割
-nnoremap <Leader>s :<C-u>sp<CR><C-w><C-w>
-nnoremap <Leader>v :<C-u>vs<CR><C-w><C-w>
+nnoremap <silent> <Leader>s :<C-u>sp<CR><C-w><C-w>
+nnoremap <silent> <Leader>v :<C-u>vs<CR><C-w><C-w>
 
 nnoremap ;  :
 nnoremap :  ;
