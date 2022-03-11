@@ -146,9 +146,15 @@ highlight Normal ctermbg=none
 nnoremap <C-c> <ESC>
 inoremap <C-c> <ESC>
 
-nnoremap <Space>w  :<C-u>w<CR>
-nnoremap <Space>q  :<C-u>q<CR>
-nnoremap <Space>Q  :<C-u>q!<CR>
+let mapleader = "\<Space>"
+
+nnoremap <Leader>w  :<C-u>w<CR>
+nnoremap <Leader>q  :<C-u>q<CR>
+nnoremap <Leader>Q  :<C-u>q!<CR>
+
+" 画面分割
+nnoremap <Leader>s :<C-u>sp<CR><C-w><C-w>
+nnoremap <Leader>v :<C-u>vs<CR><C-w><C-w>
 
 nnoremap ;  :
 nnoremap :  ;
@@ -160,6 +166,12 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
+
+" コードのインデント整形
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " 入力モードでのカーソル移動
 inoremap <C-j> <Down>
