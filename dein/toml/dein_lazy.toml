@@ -25,15 +25,14 @@ hook_source = '''
   call ddc#custom#patch_global('sources', [
       \ 'around',
       \ 'file',
-      \ 'nvim-lsp',
-      \ 'vsnip',
+      \ 'nvim-lsp'
       \ ])
 
   call ddc#custom#patch_global('sourceOptions', {
       \ '_': {
       \   'matchers': ['matcher_head'],
       \   'sorters': ['sorter_rank'],
-      \   'converters': ['converter_remove_overlap']
+      \   'converters': ['converter_remove_overlap'],
       \ },
       \ 'around': {'mark': 'Around'},
       \ 'file': {
@@ -42,13 +41,18 @@ hook_source = '''
       \   'forceCompletionPattern': '\S/\S*',
       \ },
       \ 'nvim-lsp': {
-      \   'mark': 'Lsp',
+      \   'mark': 'LSP',
       \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
       \ },
       \ })
 
    call ddc#custom#patch_global('sourceParams', {
       \ 'around': {'maxSize': 500},
+      \ })
+
+   " Use Customized labels
+   call ddc#custom#patch_global('sourceParams', {
+      \ 'nvim-lsp': { 'kindLabels': { 'Class': 'c' } },
       \ })
 
   " pum.vim setting
@@ -99,12 +103,13 @@ on_source = 'ddc.vim'
 # LSP settings=============================
 [[plugins]]
 repo = 'Shougo/ddc-nvim-lsp'
-on_source = 'ddc.vim'
+#on_source = 'ddc.vim'
+on_source = 'vim-vsnip' # これ大事
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
-on_event = 'InsertEnter'
-#on_source = 'nvim-lspconfig'
+#on_event = 'InsertEnter'
+on_source = 'nvim-lspconfig'
 depends = ['vim-vsnip-integ', 'friendly-snippets']
 hook_source = '''
   imap <expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
@@ -118,6 +123,7 @@ hook_source = '''
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip-integ'
+on_source = 'nvim-lspconfig'
 hook_source = '''
   autocmd User PumCompleteDone call vsnip_integ#on_complete_done(g:pum#completed_item)
 '''
@@ -147,14 +153,14 @@ hook_source = '''
   end
 
   -- capabilitiesの設定でスニペットが効くはずだが、うまく行かない
---  local capabilities = vim.lsp.protocol.make_client_capabilities()
---  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   local lsp_installer = require("nvim-lsp-installer")
   lsp_installer.on_server_ready(function(server)
    local opts = {}
    opts.on_attach = on_attach
---   opts.capabilities = capabilities
+   opts.capabilities = capabilities
    server:setup(opts)
    vim.cmd [[ do User LspAttachBuffers ]]
   end)
