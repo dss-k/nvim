@@ -9,17 +9,9 @@
 
 ## Instaration
 
-### Clone repository
-
-```
-mkdir ~/.config
-cd ~/.config
-git clone https://github.com/dss-k/nvim.git
-```
-
 ### Deno
 
-Please see [Deno](https://deno.land/). The following commands are an example.
+Please see [Deno](https://deno.land/). The following commands are an example for Linux. If MaxOS, you can use homebrew.
 
 ```
 $ curl -fsSL https://deno.land/install.sh | sh
@@ -34,10 +26,28 @@ $ vi ~/.bash_profile
 pip3 install pynvim
 pip3 install msgpack
 ```
+
+### Clone repository
+
+```
+mkdir ~/.config
+cd ~/.config
+git clone https://github.com/dss-k/nvim.git
+```
+
+### dein.vim
+
+Please see [dein.vim](https://github.com/Shougo/dein.vim). The following commands are an example for Linux/MacOS.
+```
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh ~/.config/nvim/dein
+```
+
+
 ### Language Server
 
 If you need LSP, please install Language Server by following nvim command.
-For more information, please see [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
+For more information, please see [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer).
 
 Python
 ```
