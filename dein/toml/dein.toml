@@ -17,8 +17,13 @@ hook_add = '''
   \ }
 '''
 
+# Git差分表示
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+
+# "gcc"でコメントアウト
+[[plugins]]
+repo = 'tpope/vim-commentary'
 
 # denite.vim------------------
 #[[plugins]]
