@@ -17,6 +17,9 @@ hook_add = '''
   \ }
 '''
 
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
 # denite.vim------------------
 #[[plugins]]
 #repo = 'Shougo/denite.nvim'
