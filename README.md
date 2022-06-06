@@ -32,7 +32,6 @@ $ vi ~/.bash_profile
 
 ```
 pip3 install pynvim
-pip3 install msgpack
 ```
 
 ### Clone repository
