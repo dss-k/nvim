@@ -9,6 +9,14 @@
 
 ## Instaration
 
+### NeoVim
+
+```
+$ sudo add-apt-repository ppa:neovim-ppa/unstable
+$ sudo apt-get update
+$ sudo apt-get install neovim
+```
+
 ### Deno
 
 Please see [Deno](https://deno.land/). The following commands are an example for Linux. If MaxOS, you can use homebrew.
