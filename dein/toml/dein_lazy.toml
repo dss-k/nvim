@@ -1,17 +1,21 @@
-# deoplete------------------
+# treesitter------------------
 
-#[[plugins]]
-#repo = 'Shougo/deoplete.nvim'
-#hook_post_source = '''
-#  let g:deoplete#enable_at_startup = 1
-#  "let g:deoplete#auto_complete_delay = 0
-#'''
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_event = 'BufRead'
+hook_source = '''
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,  -- syntax highlightを有効にする
+    disable = {
+    }
+  },
+  ensure_installed = 'all'
+}
+EOF
+'''
 
-#[[plugins]]
-#repo = 'roxma/nvim-yarp'
-#
-#[[plugins]]
-#repo = 'roxma/vim-hug-neovim-rpc'
 
 #--------------------------
 

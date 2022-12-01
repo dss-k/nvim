@@ -7,7 +7,7 @@ repo = 'leico/autodate.vim'
 
 #カラースキーマ
 [[plugins]]
-repo = 'tomasr/molokai'
+repo = 'ofirgall/ofirkai.nvim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -28,6 +28,10 @@ repo = 'tpope/vim-commentary'
 # インデント表示
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
+
+# Nerd fonts
+[[plugins]]
+repo='ryanoasis/vim-devicons'
 
 # denite.vim------------------
 #[[plugins]]

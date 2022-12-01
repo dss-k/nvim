@@ -138,7 +138,7 @@ augroup END
 "  autocmd BufReadPost * call AU_ReCheck_FENC()
 "endif
 
-colorscheme molokai
+colorscheme ofirkai
 let g:rehash256 = 1
 highlight Normal ctermbg=none
 
