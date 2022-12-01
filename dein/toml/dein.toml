@@ -9,12 +9,23 @@ repo = 'leico/autodate.vim'
 [[plugins]]
 repo = 'ofirgall/ofirkai.nvim'
 
+# [[plugins]]
+# repo = 'itchyny/lightline.vim'
+# hook_add = '''
+#   let g:lightline = {
+#   \ 'colorscheme': 'wombat'
+#   \ }
+# '''
+
 [[plugins]]
-repo = 'itchyny/lightline.vim'
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
 hook_add = '''
-  let g:lightline = {
-  \ 'colorscheme': 'wombat'
-  \ }
+let g:airline_theme = 'wombat'               " テーマの指定
+let g:airline#extensions#tabline#enabled = 1 " タブラインを表示
+let g:airline_powerline_fonts = 1            " Powerline Fontsを利用
 '''
 
 # Git差分表示
@@ -33,6 +44,7 @@ repo = 'lukas-reineke/indent-blankline.nvim'
 [[plugins]]
 repo='ryanoasis/vim-devicons'
 
+#--------------------------
 # denite.vim------------------
 #[[plugins]]
 #repo = 'Shougo/denite.nvim'
