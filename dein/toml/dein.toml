@@ -103,7 +103,7 @@ hook_add= '''
 
   "ddu key mapping
   nnoremap <silent> <C-f> :<C-u>Ddu file<CR>
-  nnoremap <silent> <C-u> :<C-u>Ddu file_rec<CR>
+  nnoremap <silent> <C-u> :<C-u>Ddu file_rec -source-param-ignoredDirectories=['.git','venv','__pycache__']<CR>
   nnoremap <silent> <C-r> :<C-u>Ddu file_old<CR>
   nnoremap <silent> <C-b> :<C-u>Ddu buffer<CR>
 '''
