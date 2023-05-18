@@ -213,3 +213,13 @@ let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 " プレビューウィンドウを垂直分割で表示する
 let g:netrw_preview=1
 """"""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""
+" Neovim terminalモード設定
+" 下分割でターミナルモードを起動
+nnoremap <silent> tx <cmd>belowright new<CR><cmd>terminal<CR>
+" ターミナルを開いたらに常にinsertモードに入る
+autocmd TermOpen * :startinsert
+" ターミナルモードで行番号を非表示
+autocmd TermOpen * setlocal norelativenumber
+autocmd TermOpen * setlocal nonumber

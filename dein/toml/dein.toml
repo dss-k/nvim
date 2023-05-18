@@ -60,13 +60,13 @@ repo='ryanoasis/vim-devicons'
 #        nnoremap <silent><buffer><expr> <Space>
 #                \ denite#do_map('toggle_select').'j'
 #        nnoremap <silent><buffer><expr> <CR>
-#                \ denite#do_map('do_action')
+#                \ denite#do_map('item_action')
 #        nnoremap <silent><buffer><expr> o
-#                \ denite#do_map('do_action')
+#                \ denite#do_map('item_action')
 #        nnoremap <silent><buffer><expr> s
-#                \ denite#do_map('do_action', 'split')
+#                \ denite#do_map('item_action', 'split')
 #        nnoremap <silent><buffer><expr> v
-#                \ denite#do_map('do_action', 'vsplit')
+#                \ denite#do_map('item_action', 'vsplit')
 #        nnoremap <silent><buffer><expr> i
 #                \ denite#do_map('open_filter_buffer')
 #        nnoremap <silent><buffer><expr> ..
@@ -115,13 +115,13 @@ hook_add = '''
   autocmd FileType ddu-ff call s:ddu_my_settings()
   function! s:ddu_my_settings() abort
     nnoremap <buffer><silent> <CR>
-          \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+          \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
     nnoremap <buffer><silent> <Space>
-          \ <Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>
+          \ <Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>
     nnoremap <buffer><silent> i
-          \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+          \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
     nnoremap <buffer><silent> q
-          \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+          \ <Cmd>call ddu#ui#do_action('quit')<CR>
   endfunction
 
   autocmd FileType ddu-ff-filter call s:ddu_filter_my_settings()
