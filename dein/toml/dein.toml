@@ -85,7 +85,7 @@ hook_add= '''
   call ddu#custom#patch_global({
     \   'ui': 'ff',
     \   'sources': [{'name':'file','params':{}},
-    \     {'name':'file_rec','params':{}},
+    \     {'name':'file_rec','params':{'ignoredDirectories': [".git","venv","__pycache__"]}},
     \     {'name':'file_old','params':{}},
     \     {'name':'register'},
     \     {'name':'buffer'}],
@@ -103,7 +103,7 @@ hook_add= '''
 
   "ddu key mapping
   nnoremap <silent> <C-f> :<C-u>Ddu file<CR>
-  nnoremap <silent> <C-u> :<C-u>Ddu file_rec -source-param-ignoredDirectories=['.git','venv','__pycache__']<CR>
+  nnoremap <silent> <C-u> :<C-u>Ddu file_rec<CR>
   nnoremap <silent> <C-r> :<C-u>Ddu file_old<CR>
   nnoremap <silent> <C-b> :<C-u>Ddu buffer<CR>
 '''
