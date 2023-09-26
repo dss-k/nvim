@@ -333,6 +333,27 @@ EOF
 '''
 
 [[plugins]]
+repo ='mfussenegger/nvim-lint'
+on_source = 'mason.nvim'
+hook_source = '''
+  lua << EOF
+    require('lint').linters_by_ft = {
+      cpp = {'cpplint'}
+    }
+    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+      callback = function()
+        require("lint").try_lint()
+      end,
+    })
+    local cpplint = require('lint').linters.cpplint
+    cpplint.args = {
+      -- <- Add a new parameter here
+      '--linelength=200',
+    }
+EOF
+'''
+
+[[plugins]]
 repo ='mattn/vim-lsp-icons'
 on_source = 'nvim-lspconfig'
 # ======================================
