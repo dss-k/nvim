@@ -223,3 +223,7 @@ autocmd TermOpen * :startinsert
 " ターミナルモードで行番号を非表示
 autocmd TermOpen * setlocal norelativenumber
 autocmd TermOpen * setlocal nonumber
+
+"""""""""""""""""""""""""""""
+" クリップボード設定
+set clipboard+=unnamedplus
