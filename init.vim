@@ -5,6 +5,7 @@ endif
 
 " Required:
 set runtimepath+=$HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+"set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
 if dein#load_state($HOME . '/.config/nvim/dein')
